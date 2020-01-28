@@ -1,0 +1,6 @@
+Feature
+    - input twitter user name
+    - get tweets
+    - run against trained naive bayes
+    - calculate score
+    - report score
