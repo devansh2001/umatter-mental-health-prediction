@@ -13,97 +13,97 @@ test_file = 'test.csv'
 train_file = 'training_data.csv'
 
 def check_utf8(input_string):
-  input_list = [input_string]
-  regexp = re.compile(r'[^\u0020-\u00FF]')
-  good_strs = list(filter(lambda s: not regexp.search(s), input_list))
-  if (len(good_strs) == 0):
-    print('Ignoring: ' + input_string)
-    return False
-  else:
-    return True
-  return good_strs
+    input_list = [input_string]
+    regexp = re.compile(r'[^\u0020-\u00FF]')
+    good_strs = list(filter(lambda s: not regexp.search(s), input_list))
+    if (len(good_strs) == 0):
+        print('Ignoring: ' + input_string)
+        return False
+    else:
+        return True
+    # return good_strs
 
 def generate_obj(input_string):
-  try:
-    # print('Splitting: ' + input_string)
-    split = input_string.split(",")
-    # print('Success')
-    # return {label, data}
-    return split
-  except Exception:
-    # print(traceback.format_exc())
-    return None
+    try:
+        # print('Splitting: ' + input_string)
+        split = input_string.split(",")
+        # print('Success')
+        # return {label, data}
+        return split
+    except Exception:
+        # print(traceback.format_exc())
+        return None
 
 # generate_obj('4,"@stellargirl I loooooooovvvvvveee my Kindle2. Not that the DX is cool, but the 2 is fantastic in its own right."')
 
 def create_dataframe(input_file_path):
-  num_invalid = 0
-  num_valid = 0
-  label_0_count = 0
-  label_2_count = 0
-  label_4_count = 0
-  count = 0
-  df = pd.DataFrame(columns=['sentiment', 'text'])
-  with open(base_file_path + input_file_path, "r") as file:
-    line = file.readline()
-    # print(line)
-    while line:
-      count = count + 1
-      try:
+    num_invalid = 0
+    num_valid = 0
+    label_0_count = 0
+    label_2_count = 0
+    label_4_count = 0
+    count = 0
+    df = pd.DataFrame(columns=['sentiment', 'text'])
+    with open(base_file_path + input_file_path, "r") as file:
         line = file.readline()
-        line = line.strip('\n')
-        # print(line) if check_utf8(line) and generate_obj(line) else print('N')
         # print(line)
-        if (check_utf8(line) == True):
-          # print('UTF')
-          split = generate_obj(line)
-          # print(split)
-          if (split != None):
-            # print('Split okay')
+        while line:
+            count = count + 1
             try:
-              # df[count] = split
-              # print('Split 0')
-              # print(split[0])
-              # print('Split 1')
-              # print(split[1])
+                line = file.readline()
+                line = line.strip('\n')
+                # print(line) if check_utf8(line) and generate_obj(line) else print('N')
+                # print(line)
+                if (check_utf8(line) == True):
+                    # print('UTF')
+                    split = generate_obj(line)
+                    # print(split)
+                    if (split != None):
+                        # print('Split okay')
+                        try:
+                            # df[count] = split
+                            # print('Split 0')
+                            # print(split[0])
+                            # print('Split 1')
+                            # print(split[1])
 
-              data = {'sentiment': split[0], 'text': split[1]}
-              if data['sentiment'] == '0':
-                label_0_count = label_0_count + 1
-              elif data['sentiment'] == '2':
-                label_2_count = label_2_count + 1
-              elif data['sentiment'] == '4':
-                label_4_count = label_4_count + 1
-              else:
-                print(data)
-              temp_df = pd.DataFrame(data, index=[num_valid])
-              num_valid = num_valid + 1
-              # print(temp_df)
-              df = df.append(temp_df)
-              # num_valid = num_valid + 1
-              # print('Done')
-              # print(df[count])
-              if (count % 10000 == 0):
-                print('Total: ' + str(count))
-                print('Valid: ' + str(num_valid))
-                print('Invalid: ' + str(num_invalid))
-                print('0 Label: ' + str(label_0_count))
-                print('2 Label: ' + str(label_2_count))
-                print('4 Label: ' + str(label_4_count))
-                print('*****')
+                            data = {'sentiment': split[0], 'text': split[1]}
+                            if data['sentiment'] == '0':
+                                label_0_count = label_0_count + 1
+                            elif data['sentiment'] == '2':
+                                label_2_count = label_2_count + 1
+                            elif data['sentiment'] == '4':
+                                label_4_count = label_4_count + 1
+                            else:
+                                print(data)
+                            temp_df = pd.DataFrame(data, index=[num_valid])
+                            num_valid = num_valid + 1
+                            # print(temp_df)
+                            df = df.append(temp_df)
+                            # num_valid = num_valid + 1
+                            # print('Done')
+                            # print(df[count])
+                            if (count % 10000 == 0):
+                                print('Total: ' + str(count))
+                                print('Valid: ' + str(num_valid))
+                                print('Invalid: ' + str(num_invalid))
+                                print('0 Label: ' + str(label_0_count))
+                                print('2 Label: ' + str(label_2_count))
+                                print('4 Label: ' + str(label_4_count))
+                                print('*****')
+                        except Exception:
+                            # print(sys.info())
+                            num_invalid = num_invalid + 1
+                            pass
+                    else:
+                        num_invalid = num_invalid + 1
+                else:
+                    num_invalid = num_invalid + 1
+            # print(line)
             except Exception:
-              # print(sys.info())
-              num_invalid = num_invalid + 1
-              pass
-          else:
-            num_invalid = num_invalid + 1
-        else:
-          num_invalid = num_invalid + 1
-      # print(line)
-      except Exception:
-        # traceback.print_exc()
-        num_invalid = num_invalid + 1
-  return df
+                # traceback.print_exc()
+                num_invalid = num_invalid + 1
+    return df
 
 
 print('-----DF----')
@@ -136,15 +136,15 @@ max_tweet_length = 0
 # print(df)
 
 for i in range(0, len(df['text'])):
-  if (i + 1) % 10000 == 0:
-    print('Completed: ' + str(i + 1) + ' of ' + str(len(df['text'])))
-  for j in range(0, len(df['text'][i])):
-    tweet = df['text'][i]
-    max_tweet_length = max(max_tweet_length, len(tweet))
-    tweet_tokens = tweet.split()
-    count = count + 1
-    for k in range(0, len(tweet_tokens)):
-      unique_elements.add(tweet_tokens[k])
+    if (i + 1) % 10000 == 0:
+        print('Completed: ' + str(i + 1) + ' of ' + str(len(df['text'])))
+    for j in range(0, len(df['text'][i])):
+        tweet = df['text'][i]
+        max_tweet_length = max(max_tweet_length, len(tweet))
+        tweet_tokens = tweet.split()
+        count = count + 1
+        for k in range(0, len(tweet_tokens)):
+            unique_elements.add(tweet_tokens[k])
 
 print(len(unique_elements))
 # print(unique_elements)
