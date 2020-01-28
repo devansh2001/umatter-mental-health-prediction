@@ -10,20 +10,13 @@ from sklearn.metrics import accuracy_score
 class NaiveBayesClassification:
 
     naive_bayes = None
+    vectorized_data_1 = None
 
     def __init__(self, data_source):
-        vectorized_data = self.prepare_data(data_source)
-        self.naive_bayes = self.train_naive_bayes(vectorized_data)
-
-    def tokenize_training_data(self, data):
-        vectorizer = CountVectorizer()
-        tokenized_data = vectorizer.fit_transform(data)
-        return tokenized_data
-
-    def tokenize_testing_data(self, data):
-        vectorizer = CountVectorizer()
-        tokenized_data = vectorizer.transform(data)
-        return tokenized_data
+        self.vectorized_data_1 = self.prepare_data(data_source)
+        self.naive_bayes = self.train_naive_bayes(vectorized_data=self.vectorized_data_1)
+        self.get_accuracy()
+        # print(self.get_prediction(['I like apples']))
 
     def prepare_data(self, data_source):
         t0 = datetime.datetime.utcnow()
@@ -35,13 +28,13 @@ class NaiveBayesClassification:
         X_train, X_test, Y_train, Y_test = train_test_split(data['tweet'], data['sentiment'], test_size=0.01, random_state=1)
         print('Completed splitting in ' + str(datetime.datetime.utcnow() - t0))
         t0 = datetime.datetime.utcnow()
+        vectorizor = CountVectorizer()
         print('Tokenizing training data ...')
-        X_train_vectorized = self.tokenize_training_data(X_train)
+        X_train_vectorized = vectorizor.fit_transform(X_train)
         print('Tokenized training data in ' + str(datetime.datetime.utcnow() - t0))
         t0 = datetime.datetime.utcnow()
         print('Tokenizing testing data ...')
-        vectorized = CountVectorizer()
-        X_test_vectorized = vectorized.fit_transform(X_test)
+        X_test_vectorized = vectorizor.transform(X_test)
         print('Tokenized testing data in ' + str(datetime.datetime.utcnow() - t0))
         return {'X_train_vectorized': X_train_vectorized, 'X_test_vectorized': X_test_vectorized, 'Y_train': Y_train, 'Y_test': Y_test}
 
@@ -53,14 +46,25 @@ class NaiveBayesClassification:
         print('Tokenized testing data in ' + str(datetime.datetime.utcnow() - t0))
         return naive_bayes
 
+    def get_accuracy(self):
+        prediction = self.naive_bayes.predict(self.vectorized_data_1['X_test_vectorized'])
+        print(self.vectorized_data_1['X_test_vectorized'][0])
+        print('Accuracy score: ', accuracy_score(self.vectorized_data_1['Y_test'], prediction))
+
     def get_prediction(self, data):
-        tokenized_input = self.tokenize_testing_data([data])
+        # tokenized_input = self.tokenize_testing_data([data])
+        vectorizor = CountVectorizer()
+        print(data)
+        my_texts = ['I hate apples', 'Wow! Great movie']
+        tokenized_input = vectorizor.transform(my_texts)
+        print(tokenized_input)
         prediction = self.naive_bayes.predict(tokenized_input)
+        print(prediction)
         return prediction
 
 
 nb = NaiveBayesClassification(data_source='./RawData/training_data_final.csv')
-nb.get_prediction('I like apples')
+print(nb.get_prediction(['I love this class', 'Wow I am so excited']))
 
 # print(X_test)
 # my_texts = ['I hate apples', 'Wow! Great movie']
