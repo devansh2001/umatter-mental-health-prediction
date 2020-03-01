@@ -5,7 +5,8 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
-
+# 240,000 Tweets used
+# 2400 testing; 237,600 training
 class NaiveBayesClassification:
 
     naive_bayes = None
@@ -40,7 +41,7 @@ class NaiveBayesClassification:
     def train_naive_bayes(self, vectorized_data):
         t0 = datetime.datetime.utcnow()
         naive_bayes = MultinomialNB()
-        print('Training NB data ...')
+        print('Training NB data ... ('+ str(vectorized_data['X_train_vectorized'].shape[0]) + ') values')
         naive_bayes.fit(vectorized_data['X_train_vectorized'], vectorized_data['Y_train'])
         print('Tokenized testing data in ' + str(datetime.datetime.utcnow() - t0))
         return naive_bayes
@@ -56,5 +57,10 @@ class NaiveBayesClassification:
 
 if __name__ == '__main__':
     nb = NaiveBayesClassification(data_source='./RawData/training_data_final.csv')
-    print(nb.get_prediction(['I love this class', 'Wow I am so excited']))
+    test_list = ['I love this class', 'Wow I am so excited', 'Life is sad', 'Great! Now I failed the exam']
+    print('(4 -> positive, 0 ->  negative)')
+    print('Tweets:')
+    print(test_list)
+    print('Results: ')
+    print(nb.get_prediction(test_list))
 
