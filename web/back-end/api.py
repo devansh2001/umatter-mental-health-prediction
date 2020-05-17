@@ -3,8 +3,12 @@ import oauth2 as oauth
 import json
 import yaml
 
+from ml.classifier.NaiveBayesClassification import NaiveBayesClassification
+
 app = flask.Flask(__name__)
 app.config['DEBUG'] = True
+
+nbc = NaiveBayesClassification(data_source='../../ml/RawData/training_data_final.csv')
 
 with open(file='./config.yaml', mode='r') as file:
     data = yaml.load(file)
@@ -33,9 +37,24 @@ def get_tweets(username='DevanshJatin', count=1):
     response, data = client.request(generated_request)
     tweets = json.loads(data)
     ret_data = {'data': []}
+
     for tweet in tweets:
-        ret_data['data'].append(tweet['text'])
+        object = {
+            "tweet": '',
+            "score": -1
+        }
+        object['tweet'] = tweet['text']
+        # print(object['tweet'])
+        object['score'] = int(nbc.get_prediction([tweet['text']])[0])
+        # print(object['score'])
+        object = json.loads(json.dumps(object))
+
+        ret_data['data'].append(object)
     return ret_data
+
+def get_score(tweet):
+    return nbc.get_prediction(tweet)
+
 
 
 
