@@ -6,6 +6,17 @@ class SearchByUsernameComponent extends Component {
         super(props);
     }
 
+    handleClick = async () => {
+        var apiResponse = null;
+        await fetch('/get-tweets/DevanshJatin', {
+            method : 'GET'
+        })
+            .then(response => response.json())
+            .then(data => apiResponse = data);
+        console.log(apiResponse);
+        this.props.updateCallback(apiResponse['data']);
+    };
+
     render() {
         return (
             <div className={'info-and-search'}>
@@ -33,7 +44,7 @@ class SearchByUsernameComponent extends Component {
                             </InputGroup>
                         </Col>
                         <Col xs={3}>
-                            <Button variant={"danger"} className={'search-button'} size={"lg"}>Search</Button>
+                            <Button onClick={this.handleClick} variant={"danger"} className={'search-button'} size={"lg"}>Search</Button>
                         </Col>
                     </Row>
                 </Container>

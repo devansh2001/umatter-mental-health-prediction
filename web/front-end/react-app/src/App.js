@@ -1,22 +1,15 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import NavBarComponent from './components/NavBarComponent';
-import SearchByUsernameComponent from './components/SearchByUsernameComponent';
-import TweetCard from './components/TweetCard'
-import TweetContainer from './components/TweetContainer'
-import {Container} from 'react-bootstrap';
+import ApplicationManager from './components/ApplicationManager';
+
 
 function App() {
-  return (
-    <div className="App">
-      {/*<Container>*/}
-        <NavBarComponent/>
-        <SearchByUsernameComponent/>
-        <TweetContainer/>
-      {/*</Container>*/}
-    </div>
-  );
+        return (
+            <div className="App">
+                <ApplicationManager/>
+            </div>
+        )
 }
 
 export default App;
