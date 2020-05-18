@@ -32,7 +32,7 @@ def test():
 
 
 @app.route('/get-tweets/<username>', methods=['GET'])
-def get_tweets(username='DevanshJatin', count=1):
+def get_tweets(username='DevanshJatin', count=2):
     generated_request = twitter_api + 'screen_name=' + username + '&count=' + str(count)
     response, data = client.request(generated_request)
     tweets = json.loads(data)
@@ -41,21 +41,18 @@ def get_tweets(username='DevanshJatin', count=1):
     for tweet in tweets:
         object = {
             "tweet": '',
-            "score": -1
+            "score": -1,
+            "id": -1
         }
         object['tweet'] = tweet['text']
         # print(object['tweet'])
         object['score'] = int(nbc.get_prediction([tweet['text']])[0])
         # print(object['score'])
+        object['id'] = tweet['id_str']
         object = json.loads(json.dumps(object))
 
         ret_data['data'].append(object)
     return ret_data
-
-def get_score(tweet):
-    return nbc.get_prediction(tweet)
-
-
 
 
 if __name__ == '__main__':
