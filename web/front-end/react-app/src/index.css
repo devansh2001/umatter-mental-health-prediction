@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.my-navbar {
+  background-color: #E95420;
+}
+
+.info-and-search {
+  padding: 20px;
+  background-color: #f29879;
+}
+
+.info-text {
+  color: white;
+}
+
+.my-tweet {
+  margin: 20px;
+  padding: 10px;
+  display: inline-block;
+}
+
+.tweet-container {
+  text-align: center;
+}
