@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NavBarComponent from "./NavBarComponent";
 import SearchByUsernameComponent from "./SearchByUsernameComponent";
 import TweetContainer from "./TweetContainer";
+import MadeWLoveComponent from './MadeWLoveComponent';
 
 class ApplicationManager extends Component {
     constructor(props) {
@@ -27,6 +28,7 @@ class ApplicationManager extends Component {
                 <NavBarComponent/>
                 <SearchByUsernameComponent updateCallback={this.updateData}/>
                 <TweetContainer data={this.state.data}/>
+                <MadeWLoveComponent/>
             </div>
         );
     }

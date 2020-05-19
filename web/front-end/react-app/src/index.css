@@ -38,3 +38,14 @@ code {
 .my-card {
     border: 1px solid #787a5f;
 }
+
+.my-bar {
+  display: inline-block;
+}
+.made-with-love {
+  padding: 10px;
+  text-align: center;
+  background-color: #D3D3D3;
+  font-family: "Courier New";
+  height: 5vh;
+}
