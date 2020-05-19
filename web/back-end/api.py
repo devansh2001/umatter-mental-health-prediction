@@ -32,7 +32,7 @@ def test():
 
 
 @app.route('/get-tweets/<username>', methods=['GET'])
-def get_tweets(username='DevanshJatin', count=5):
+def get_tweets(username='DevanshJatin', count=10):
     generated_request = twitter_api + 'screen_name=' + username + '&count=' + str(count)
     response, data = client.request(generated_request)
     tweets = json.loads(data)
