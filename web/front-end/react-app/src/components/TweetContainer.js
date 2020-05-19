@@ -21,10 +21,11 @@ class TweetContainer extends Component {
         }
         var cards = [];
         for (let i = 0; i < data.length; i++) {
+            let bgColor = data[i]['score'] === 0 ? '#ffc5c5' : '#b1ffb1';
             cards[i] = (
-                <div>
+                <div className={'my-card'}  style={{backgroundColor: bgColor}}>
                     <Row>
-                        <Col>
+                        <Col >
                             <TweetCard tweetId={data[i]['id']}/>
                         </Col>
                     </Row>

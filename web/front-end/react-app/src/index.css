@@ -13,12 +13,12 @@ code {
 }
 
 .my-navbar {
-  background-color: #E95420;
+  background-color: #05668d;
 }
 
 .info-and-search {
   padding: 20px;
-  background-color: #f29879;
+  background-color: #00a896;
 }
 
 .info-text {
@@ -27,10 +27,14 @@ code {
 
 .my-tweet {
   margin: 20px;
-  padding: 10px;
   display: inline-block;
 }
 
 .tweet-container {
   text-align: center;
+    background-color: #f0f3bd;
+}
+
+.my-card {
+    border: 1px solid #787a5f;
 }
