@@ -49,6 +49,9 @@ class SearchByUsernameComponent extends Component {
                                 <InputGroup.Prepend>
                                     <InputGroup.Text id="inputGroup-sizing-lg">Twitter Username</InputGroup.Text>
                                 </InputGroup.Prepend>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+                                </InputGroup.Prepend>
                                 <FormControl onChange={this.handleUsernameChange} aria-label="Large" aria-describedby="inputGroup-sizing-sm" />
                             </InputGroup>
                         </Col>

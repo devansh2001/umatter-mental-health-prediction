@@ -25,7 +25,7 @@ class ApplicationManager extends Component {
 
     render() {
         return (
-            <div>
+            <div className={'full-app'}>
                 <NavBarComponent/>
                 <SearchByUsernameComponent updateCallback={this.updateData}/>
                 <PositivityPercentageComponent data={this.state.data}/>

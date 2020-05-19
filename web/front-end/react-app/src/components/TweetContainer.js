@@ -36,9 +36,12 @@ class TweetContainer extends Component {
     };
 
     render() {
+        if (this.state.data == null || this.state.data.length === 0) {
+            return (<div></div>);
+        }
         return (
             <div className={'tweet-container'}>
-                <h3>Chronologically sorted Tweets</h3>
+                <h3 className={'container-heading'}>Chronologically sorted Tweets</h3>
                 <Container>
                     {this.formatTweetCards()}
                 </Container>

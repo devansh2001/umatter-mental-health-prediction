@@ -43,13 +43,14 @@ class PositivityPercentageComponent extends Component {
                     value: percentages['negative']
                 }
             ];
-            const colors = ['#ffc5c5', '#b1ffb1'];
+            const colors = ['#b1ffb1', '#ffc5c5'];
             // const colors = ['#EAAA00', '#004F9F'];
             console.log(this.props.data);
             console.log('pie');
             return (
                 <div className={'my-chart'}>
                     <h3>Statistics over last X tweets</h3>
+                    <br/>
                     <div className={'my-chart-offset'}>
 
                         <DonutChart
