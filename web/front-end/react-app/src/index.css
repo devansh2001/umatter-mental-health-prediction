@@ -13,12 +13,13 @@ code {
 }
 
 .my-navbar {
-  background-color: #05668d;
+  background-color: #B3A369;
 }
 
 .info-and-search {
+  border-top: 2px white solid;
   padding: 20px;
-  background-color: #00a896;
+  background-color: #B3A369;
 }
 
 .info-text {
@@ -32,7 +33,7 @@ code {
 
 .tweet-container {
   text-align: center;
-    background-color: #f0f3bd;
+    background-color: #E5E5E5;
 }
 
 .my-card {
