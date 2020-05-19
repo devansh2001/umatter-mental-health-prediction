@@ -20,6 +20,7 @@ code {
   border-top: 2px white solid;
   padding: 20px;
   background-color: #B3A369;
+  border-bottom: 2px white solid;
 }
 
 .info-text {
@@ -49,4 +50,14 @@ code {
   background-color: #D3D3D3;
   font-family: "Courier New";
   height: 5vh;
+}
+
+.my-chart {
+  padding: 20px;
+  background-color: #E5E5E5;
+  width: auto;
+  border-bottom: 2px #545454 solid;
+}
+.my-chart-offset {
+  margin-left: 200px;
 }
