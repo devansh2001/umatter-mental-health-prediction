@@ -4,6 +4,7 @@ import { TwitterTweetEmbed } from 'react-twitter-embed';
 class TweetCard extends Component {
     constructor(props) {
         super(props);
+        // 933354946111705097
     }
 
     render() {
@@ -11,7 +12,7 @@ class TweetCard extends Component {
             <div className={'my-tweet'}>
                 <div className="centerContent">
                     <div className="selfCenter">
-                        <TwitterTweetEmbed tweetId="933354946111705097" />
+                        <TwitterTweetEmbed tweetId={this.props.tweetId} />
                     </div>
                 </div>
             </div>

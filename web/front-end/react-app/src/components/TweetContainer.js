@@ -5,19 +5,34 @@ import TweetCard from "./TweetCard";
 class TweetContainer extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            data: this.props.data
+        }
+    }
+    componentWillReceiveProps(nextProps) {
+        this.setState({ data: nextProps.data });
+        console.log('Got more data yay');
     }
 
     formatTweetCards = () => {
-        return(
-            <div>
-                <Row>
-                    <Col>
-                        <TweetCard/>
-                    </Col>
-                </Row>
-            </div>
-        )
-    }
+        let data = this.state.data;
+        if (data == null) {
+            return (<div></div>)
+        }
+        var cards = [];
+        for (let i = 0; i < data.length; i++) {
+            cards[i] = (
+                <div>
+                    <Row>
+                        <Col>
+                            <TweetCard tweetId={data[i]['id']}/>
+                        </Col>
+                    </Row>
+                </div>
+            )
+        }
+        return cards;
+    };
 
     render() {
         return (

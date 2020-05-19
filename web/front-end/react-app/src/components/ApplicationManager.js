@@ -11,6 +11,10 @@ class ApplicationManager extends Component {
         }
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('Updated');
+    }
+
     updateData = (freshData) => {
         this.setState({
             data : freshData
@@ -22,7 +26,7 @@ class ApplicationManager extends Component {
             <div>
                 <NavBarComponent/>
                 <SearchByUsernameComponent updateCallback={this.updateData}/>
-                <TweetContainer/>
+                <TweetContainer data={this.state.data}/>
             </div>
         );
     }
