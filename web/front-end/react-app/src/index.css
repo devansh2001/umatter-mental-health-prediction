@@ -70,3 +70,14 @@ code {
 .full-app {
   height: 100vh;
 }
+
+.gt-image {
+  opacity: 70%;
+  max-width: 100%;
+  height: auto;
+  min-height: 68vh;
+  max-height: 80vh;
+  object-fit: cover;
+  overflow: hidden;
+  object-position: center center;
+}

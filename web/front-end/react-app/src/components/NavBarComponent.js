@@ -13,9 +13,9 @@ class NavBarComponent extends Component {
                 <Navbar className={'my-navbar'} variant={'dark'}>
                     <Navbar.Brand href="#home">UMatter - Mental Health Prediction</Navbar.Brand>
                     <Nav className="mr-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
+                        <Nav.Link href="#home"></Nav.Link>
+                        <Nav.Link href="#features"></Nav.Link>
+                        <Nav.Link href="#pricing"></Nav.Link>
                     </Nav>
                     <Nav>
                         <Navbar.Brand>GEORGIA INSTITUTE OF TECHNOLOGY</Navbar.Brand>
