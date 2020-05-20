@@ -22,10 +22,18 @@ class SearchByUsernameComponent extends Component {
         });
     };
 
+    handleClear = () => {
+        this.setState({
+            username: '',
+            count: 1
+        });
+        this.props.updateCallback(null);
+    };
+
     handleClick = async () => {
         console.log(this.state);
         var apiResponse = null;
-        await fetch('/get-tweets/' + this.state.username, {
+        await fetch('/get-tweets/' + this.state.username + '/' + this.state.count, {
             method : 'GET'
         })
             .then(response => response.json())
@@ -52,7 +60,7 @@ class SearchByUsernameComponent extends Component {
                                 <InputGroup.Prepend>
                                     <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
                                 </InputGroup.Prepend>
-                                <FormControl onChange={this.handleUsernameChange} aria-label="Large" aria-describedby="inputGroup-sizing-sm" />
+                                <FormControl onChange={this.handleUsernameChange} value={this.state.username} aria-label="Large" aria-describedby="inputGroup-sizing-sm" />
                             </InputGroup>
                         </Col>
                         <Col xs={3}>
@@ -60,11 +68,14 @@ class SearchByUsernameComponent extends Component {
                                 <InputGroup.Prepend>
                                     <InputGroup.Text id="inputGroup-sizing-lg">Tweet Count</InputGroup.Text>
                                 </InputGroup.Prepend>
-                                <FormControl onChange={this.handleTweetCountChange} aria-label="Large" aria-describedby="inputGroup-sizing-sm" />
+                                <FormControl onChange={this.handleTweetCountChange} value={this.state.count} aria-label="Large" aria-describedby="inputGroup-sizing-sm" />
                             </InputGroup>
                         </Col>
-                        <Col xs={3}>
+                        <Col xs={2}>
                             <Button onClick={this.handleClick} variant={"dark"} className={'search-button'} size={"lg"}>Search</Button>
+                        </Col>
+                        <Col xs={1}>
+                            <Button onClick={this.handleClear} variant={"dark"} className={'clear-button'} size={"lg"}>Clear</Button>
                         </Col>
                     </Row>
                 </Container>
