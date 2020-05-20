@@ -7,6 +7,7 @@ class GTLogoComponent extends Component {
         return (
             <div className={'gt-image'}>
                 {/*<img src={require('../gt.png')} />*/}
+                <Image className={'my-image'} src={require('../gt.png')}/>
             </div>
         );
     }
