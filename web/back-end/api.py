@@ -31,7 +31,7 @@ def test():
     return 'Hello, World'
 
 
-@app.route('/get-tweets/<username>', methods=['GET'])
+@app.route('/get-tweets/<username>/<count>', methods=['GET'])
 def get_tweets(username='DevanshJatin', count=10):
     generated_request = twitter_api + 'screen_name=' + username + '&count=' + str(count)
     response, data = client.request(generated_request)
