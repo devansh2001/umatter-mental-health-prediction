@@ -56,8 +56,19 @@ class NaiveBayesClassification:
         return prediction
 
 if __name__ == '__main__':
-    nb = NaiveBayesClassification(data_source='./RawData/training_data_final.csv')
-    test_list = ['I love this class', 'Wow I am so excited', 'Life is sad', 'Great! Now I failed the exam']
+    nb = NaiveBayesClassification(data_source='../RawData/training_data_final.csv')
+    test_list = [
+                'I love this class',
+                'Wow I am so excited',
+                'Life is sad these days.. I feel low',
+                'Great! Now I failed the exam',
+                'I do not think I am good enough',
+                'The party was so much fun',
+                'The class is not getting curved... RIP',
+                'Did you really think it was a good idea to cheat on the exam?',
+                'OMG! Your dog is so cute :)',
+                'I feel stuck and want to get out'
+                ]
     print('(4 -> positive, 0 ->  negative)')
     print('Tweets:')
     print(test_list)
