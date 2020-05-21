@@ -17,9 +17,6 @@ class NavBarComponent extends Component {
                         <Nav.Link href="#features"></Nav.Link>
                         <Nav.Link href="#pricing"></Nav.Link>
                     </Nav>
-                    <Nav>
-                        <Navbar.Brand>GEORGIA INSTITUTE OF TECHNOLOGY</Navbar.Brand>
-                    </Nav>
                 </Navbar>
             </div>
         );

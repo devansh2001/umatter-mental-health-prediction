@@ -71,7 +71,7 @@ code {
   height: 100vh;
 }
 
-.gt-image {
+.the-image {
   opacity: 30%;
   max-width: 100%;
   height: 60vh;
@@ -80,9 +80,4 @@ code {
   object-fit: cover;
   overflow: hidden;
   object-position: center center;
-}
-
-.my-image {
-  margin: 50px;
-  height: 500px;
 }

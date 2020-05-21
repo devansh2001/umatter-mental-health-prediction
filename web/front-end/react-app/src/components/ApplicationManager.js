@@ -4,7 +4,7 @@ import SearchByUsernameComponent from "./SearchByUsernameComponent";
 import TweetContainer from "./TweetContainer";
 import MadeWLoveComponent from './MadeWLoveComponent';
 import PositivityPercentageComponent from './PositivityPercentageComponent';
-import GTLogoComponent from './GTLogoComponent';
+import BlankSpaceComponent from './BlankSpaceComponent';
 
 class ApplicationManager extends Component {
     constructor(props) {
@@ -16,7 +16,7 @@ class ApplicationManager extends Component {
 
     getFillerComponent = () => {
         if (this.state.data == null || this.state.data.length === 0) {
-            return (<GTLogoComponent/>)
+            return (<BlankSpaceComponent/>)
         } else {
             return (
                 <div>
@@ -42,9 +42,6 @@ class ApplicationManager extends Component {
             <div className={'full-app'}>
                 <NavBarComponent/>
                 <SearchByUsernameComponent updateCallback={this.updateData}/>
-                {/*<PositivityPercentageComponent data={this.state.data}/>*/}
-                {/*<TweetContainer data={this.state.data}/>*/}
-                {/*<GTLogoComponent/>*/}
                 {this.getFillerComponent()}
                 <MadeWLoveComponent/>
             </div>
