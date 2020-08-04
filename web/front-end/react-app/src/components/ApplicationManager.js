@@ -5,13 +5,16 @@ import TweetContainer from "./TweetContainer";
 import MadeWLoveComponent from './MadeWLoveComponent';
 import PositivityPercentageComponent from './PositivityPercentageComponent';
 import BlankSpaceComponent from './BlankSpaceComponent';
+import HealthScore from './HealthScore';
+import { Row, Col } from 'react-bootstrap';
 
 class ApplicationManager extends Component {
     constructor(props) {
         super(props);
         this.state = {
             data: []
-        }
+        };
+        this.forceUpdate();
     }
 
     getFillerComponent = () => {
@@ -19,8 +22,15 @@ class ApplicationManager extends Component {
             return (<BlankSpaceComponent/>)
         } else {
             return (
-                <div>
-                    <PositivityPercentageComponent data={this.state.data}/>
+                <div className={'container-for-stats'}>
+                    <Row>
+                        <Col>
+                            <PositivityPercentageComponent data={this.state.data}/>
+                        </Col>
+                        <Col>
+                            <HealthScore data={this.state.data}/>
+                        </Col>
+                    </Row>
                     <TweetContainer data={this.state.data}/>
                 </div>
             )

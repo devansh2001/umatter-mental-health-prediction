@@ -36,6 +36,7 @@ code {
   text-align: center;
   background-color: #E5E5E5;
   border-bottom: 2px #545454 solid;
+  border-top: 2px #545454 solid;
 }
 
 .my-card {
@@ -57,8 +58,9 @@ code {
   padding: 20px;
   background-color: #E5E5E5;
   width: auto;
-  border-bottom: 2px #545454 solid;
+  border-right: 2px #545454 solid;
 }
+
 .my-chart-offset {
   margin-left: 200px;
 }
@@ -71,13 +73,16 @@ code {
   height: 100vh;
 }
 
-.the-image {
-  opacity: 30%;
-  max-width: 100%;
-  height: 60vh;
-  min-height: 68vh;
-  max-height: 80vh;
-  object-fit: cover;
-  overflow: hidden;
-  object-position: center center;
+.container-for-stats {
+  background-color: #E5E5E5;
+  width: auto;
+}
+
+.my-score-div {
+  padding: 20px;
+  width: auto;
+}
+
+.score-val {
+  font-size: 250px;
 }
