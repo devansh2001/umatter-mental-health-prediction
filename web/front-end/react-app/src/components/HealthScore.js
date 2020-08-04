@@ -8,7 +8,7 @@ class HealthScore extends Component {
     getScore = (data) => {
         if (data == null || data.length == 0) {
             return "N/A";
-        } else if (data.length < 5) {
+        } else if (data.length <= 5) {
             let count = 0;
             for (let i = 0; i < data.length; i++) {
                 if (data[i]['score'] === 4) {
