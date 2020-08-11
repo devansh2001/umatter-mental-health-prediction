@@ -4,6 +4,9 @@ Machine Learning for Mental Health Prediction
 This is a Web Application that uses a Twitter username to access most recent public tweets of a given user, and analyzes the sentiment of those tweets using a custom-built NLP model using [this](http://help.sentiment140.com/for-students) dataset from Stanford University
 to predict the mental health of the user
 
+## Demo Video
+View the Live Demo on YouTube: https://youtu.be/iUd2qhTFwcg
+
 ## The Problem
 
 According to the National Association of Mental Illnesses (NAMI) one in 5 college students experience a mental health condition. While there are resources put out by universities to help them, they are often overwhelmed by the sheer number of students to support.
@@ -30,4 +33,8 @@ We use the recent social media history (currently, only Twitter) to predict the 
 - Allows user to enter the Twitter username and number of tweets to process, and hit 'Search' to query the backend
 - Displays reports and aggregations, including a donut chart and our weighted mental health score
 - Chronologically displays recent tweets and shows the sentiment expressed in each
+
+
+
+
 
