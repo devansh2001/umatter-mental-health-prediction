@@ -1,4 +1,4 @@
-# umatter-mental-health-prediction
+# Umatter - Mental Health Prediction
 Machine Learning for Mental Health Prediction
 
 This is a Web Application that uses a Twitter username to access most recent public tweets of a given user, and analyzes the sentiment of those tweets using a custom-built NLP model using [this](http://help.sentiment140.com/for-students) dataset from Stanford University
