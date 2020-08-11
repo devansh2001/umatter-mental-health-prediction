@@ -35,6 +35,30 @@ We use the recent social media history (currently, only Twitter) to predict the 
 - Chronologically displays recent tweets and shows the sentiment expressed in each
 
 
+## Before you run
+
+Before running the application, please ensure you have Python3 and scikit-lean installed for the backend.
+To install all dependencies for the frontend, run the following commands from the root directory of the application:
+```
+cd web/front-end/react-app
+npm i
+```
+
+## Run Instructions
+
+To run, first download the Sentiment140 dataset from the above mentioned link. It was not added to this repository because it was too large.
+
+Run the backend by running the following in the root directory:
+```
+chmod +x back.sh
+./back.sh
+```
+
+Run the frontend by running the following in the root directory:
+```
+chmod +x front.sh
+./front.sh
+```
 
 
 
